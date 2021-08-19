@@ -1,9 +1,12 @@
 import qs from "qs";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import APIService from '../../services/api.services';
-import { Dropdown } from "../Dropdown";
-import { Option } from '../Dropdown/Option/index';
+import { Dropdown, Option } from "../Dropdown";
+import { Card } from "../Card";
+import { Pagination } from "./styles";
+import LoadingIndicator from "../LoadingIndicator";
+
 
 const PostList: React.FC = () => {
   const history = useHistory();
@@ -14,6 +17,8 @@ const PostList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
   const [categoryFilter, setCategoryFilter] = useState<string[]>([]);
+
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const initCategory = async () => {
@@ -41,6 +46,7 @@ const PostList: React.FC = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchPosts = async () => {
+    setLoading(true);
     const posts = await APIService.getPosts({
       limit: pageSize,
       offset: (currentPage - 1) * pageSize,
@@ -52,6 +58,7 @@ const PostList: React.FC = () => {
     // Update states
     setPageList(pageList);
     setPostList(posts.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -63,9 +70,10 @@ const PostList: React.FC = () => {
     if (category === "All") {
       setCategoryFilter([]);
     } else {
-      if (!categoryFilter.includes(category))
+      if (!categoryFilter.includes(category)) {
         setCategoryFilter([...categoryFilter, category]);
         setCurrentPage(1);
+      }
     }
   };
 
@@ -75,52 +83,35 @@ const PostList: React.FC = () => {
 
   return (
     <>
-      <div className="filter">
-        <Dropdown
-          formLabel="Choose a category"
-          action="/"
-          onChange={(e) => {
-            e.preventDefault();
-            setCategoryFilterOnClick(e.target.value);
-          }}
-        >
-          <Option selected value="All" />
-          {categoryList.map(category => (
-            <Option
-              selected={categoryFilter.includes(category.name)}
-              value={category.name} key={category.id}
-            />
+      { loading ? (
+        <LoadingIndicator />
+      ): (
+        <>
+          <div className="filter">
+            <Dropdown formLabel="Choose a category" action="/"
+              onChange={(e) => {
+                e.preventDefault(); setCategoryFilterOnClick(e.target.value);
+              }}
+            >
+              <Option selected value="All" />
+              {categoryList.map(category => (
+                <Option selected={categoryFilter.includes(category.name)}
+                  value={category.name} key={category.id}/>
+              ))}
+            </Dropdown>
+          </div>
+          {postList.map((post) => (
+            <Card post={post} />
           ))}
-        </Dropdown>
-      </div>
-      {postList.map((post) => (
-        <div className="card">
-          <div className="card-header">
-            <img src={post.author.avatar} alt="" width={100} height={100} />
-            <Link className="link" to={`/posts/${post.id}`}>
-            <p>{post.author.name}</p>
-            </Link>
-          </div>
-          <div className="card-body">
-            <p>{post.title}</p>
-            <p>{post.summary}</p>
-            <ul>{post.categories.map(cate => {
-              return <li key={cate.id}>{cate.name}</li>
-            })}</ul>
-          </div>
-          <div className="card-footer">
-            <p>{new Date(post.publishDate).toDateString()}</p>
-          </div>
-        </div>
-      ))}
-
-      <ul className="pagination">
-        {pageList.map((page) => (
-          <li className="item" onClick={() => pageChangeOnClick(page)}>
-          {page === currentPage ? `[${page}]` : page}
-        </li>
-        ))}
-      </ul>
+          <Pagination>
+            {pageList.map((page) => (
+              <li className="item" onClick={() => pageChangeOnClick(page)}>
+                {page === currentPage ? `[${page}]` : page}
+              </li>
+            ))}
+          </Pagination>
+        </>
+      )}
     </>
   )
 }

@@ -35,91 +35,9 @@ code {
   }
 }
 
-.link {
-  text-decoration: none;
-}
-.link:hover {
-  color: black;
-}
-
-.card {
-  box-shadow: 0 0 25px lightgray;
-  padding: 10px 15px;
-  width: 80%;
-  margin: 10px auto;
-  background-color: white;
-  transition: all 0.5s;
-}
-
-.card:hover {
-  background-color: lightgoldenrodyellow;
-}
-
-.card-header {
-  display: flex;
-    align-items: center;
-}
-
-.card-header img {
-  padding: 5px 10px;
-}
-
-.card-header p {
-  padding: 5px 10px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.card-body p:nth-child(1) {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.card-body p:nth-child(2) {
-  font-size: 16px;
-  font-style: italic;
-}
-
-.card-footer p {
-  text-align: right;
-  font-size: 16px;
-  font-style: italic;
-}
-
-.pagination {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pagination .item {
-  display: inline-block;
-  padding: 10px 15px;
-  border: 1px solid rgb(211 211 211);
-  background: #fff;
-  color: #3e58ed;
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.pagination .item:hover {
-  cursor: pointer;
-  background-color: lightgray;
-}
-
-.pagination .item.active {
-  background-color: #3e58ed;
-  color: #fff;
-}
-
 .filter {
   width: 50%;
   padding: 10px 20px;
-}
-
-.detail-wrapper {
-  
 }
 
 @media only screen and (max-width: 768px) {

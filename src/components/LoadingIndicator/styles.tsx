@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoadingV2 = styled.div `
+export const Loading = styled.div `
     display: inline-block;
     position: relative;
     width: 80px;

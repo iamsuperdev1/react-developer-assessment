@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownWrapper, StyledSelect, StyledLabel } from './style';
+import { DropdownWrapper, StyledSelect, StyledLabel, StyledOption } from './style';
 
 type DropdownProps = {
     formLabel: string;
@@ -21,3 +21,15 @@ export const Dropdown: React.FC<DropdownProps> = ({ formLabel, action, children,
     )
 };
 
+type OptionProps = {
+    selected?: boolean;
+    value: string;
+}
+
+export const Option: React.FC<OptionProps> = ({ value, selected }) => {
+    return (
+        <StyledOption selected={selected}>
+            {value}
+        </StyledOption>
+    )
+}

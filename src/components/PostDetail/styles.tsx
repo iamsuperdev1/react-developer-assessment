@@ -15,7 +15,7 @@ const Panel = styled.div`
     margin: 0 auto;
     @media only screen and (max-width: 768px) {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
     }
 `;
 
@@ -45,17 +45,17 @@ const PanelParagraph = styled.p`
     &:nth-child(2) {
         font-size: 14px;
         color: #777 !important;
-      }
-      &:nth-child(3) {
+    }
+    &:nth-child(3) {
         font-weight: 500;
         font-size: 15px;
-      }
-      &:nth-child(4) {
+    }
+    &:nth-child(4) {
         font-style: italic;
-      }
-      &:nth-child(5) {
+    }
+    &:nth-child(5) {
         font-weight: bold;
-      }
+    }
 `;
 
 const PanelSpan = styled.span`
@@ -90,8 +90,8 @@ const PabelBackBtn = styled.a `
     color: gray;
     transition: all 0.5s;
     &:hover {
-    color: white;
-    cursor: pointer;
+        color: white;
+        cursor: pointer;
     }
 `
 

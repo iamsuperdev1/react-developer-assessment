@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import APIService from "../../services/api.services";
-import LoadingIndicatorV2 from "../LoadingIndicatorV2";
+import LoadingIndicator from "../LoadingIndicator";
 import {
   PabelBackBtn, Panel, PanelFooter, PanelImage,
   PanelLeft, PanelLi, PanelParagraph, PanelRight, PanelSpan, PanelUL
 } from './styles';
-import { useHistory } from "react-router-dom";
 
 const PostDetail: React.FC = () => {
   const history = useHistory();
@@ -27,7 +26,7 @@ const PostDetail: React.FC = () => {
   return (
     <> 
     { !post ? (
-        <LoadingIndicatorV2 />
+        <LoadingIndicator />
       ): (
         <Panel>
           <PanelLeft>

@@ -27,4 +27,8 @@ const StyledButton = styled.input`
   border-radius: 1rem;
 `;
 
-export { DropdownWrapper, StyledSelect, StyledLabel, StyledButton };
+const StyledOption = styled.option`
+  color: ${(props) => (props.selected ? "lightgrey" : "black")};
+`;
+
+export { DropdownWrapper, StyledSelect, StyledLabel, StyledButton, StyledOption };
