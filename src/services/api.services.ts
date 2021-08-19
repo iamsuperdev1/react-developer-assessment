@@ -16,10 +16,11 @@ interface IGetCategoryResp {
 }
 
 async function getPosts(options: IGetPostOption): Promise<IGetPostResp> {
-  const response = await fetch('/api/posts');
+  const response = await fetch(`/api/posts`);
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     console.log(message);
+    console.log(response);
     return {
       count: 0,
       data: []
@@ -34,6 +35,7 @@ async function getPostById(id: string): Promise<IPost|null> {
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     console.log(message);
+    console.log(response);
     return null;
   }
   const post = await response.json();
