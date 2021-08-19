@@ -57,6 +57,7 @@ async function getCategories(): Promise<IGetCategoryResp> {
 
 const APIService = {
   getPosts,
+  getPostById,
   getCategories
 };
 
