@@ -16,7 +16,10 @@ interface IGetCategoryResp {
 }
 
 async function getPosts(options: IGetPostOption): Promise<IGetPostResp> {
-  const response = await fetch(`/api/posts`);
+  const categoryStr = encodeURIComponent(options.category.join(","))
+  const response = await fetch(
+    `/api/posts?category=${categoryStr}&limit=${options.limit}&offset=${options.offset}`
+  );
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     console.log(message);

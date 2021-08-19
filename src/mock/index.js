@@ -7,8 +7,8 @@ createServer({
     this.namespace = 'api';
 
     this.get('/posts', (_, request) => {
-      const { category, limit, offset } = request.params;
-      
+      const { category, limit, offset } = request.queryParams;
+
       const limitNum = limit ? Number(limit) : 10;
       const offsetNum = offset ? Number(offset) : 0;
 
@@ -19,9 +19,10 @@ createServer({
 
         data.posts.forEach((post) => {
           for (let i=0; i< post.categories.length; i++) {
-            if (categoryList.indexOf(post.categories[i].name) > 0) {
+
+            if (categoryList.includes(post.categories[i].name)) {
               responseData.push(post);
-              return;
+              break;
             }
           }
         });
