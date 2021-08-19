@@ -3,12 +3,14 @@ import { createBrowserHistory } from "history";
 import qs from "qs";
 import APIService from '../../services/api.services';
 import { Link } from "react-router-dom";
+import { Dropdown } from "../Dropdown";
+import { Option } from '../Dropdown/Option/index';
 
 const PostList: React.FC = () => {
   const history = createBrowserHistory();
   const [categoryList, setCategoryList] = useState<ICategory[]>([]);
   const [postList, setPostList] = useState<IPost[]>([]);
-  
+
   const [pageList, setPageList] = useState<number[]>([1]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
@@ -59,8 +61,12 @@ const PostList: React.FC = () => {
   }, [pageSize, currentPage, categoryFilter]); // eslint-disable-line react-hooks/exhaustive-deps
   
   const setCategoryFilterOnClick = (category: string) => {
-    if (!categoryFilter.includes(category))
-      setCategoryFilter([...categoryFilter, category]);
+    if (category === "All") {
+      setCategoryFilter([]);
+    } else {
+      if (!categoryFilter.includes(category))
+        setCategoryFilter([...categoryFilter, category]);
+    }
   };
 
   const pageChangeOnClick = (page: number) => {
@@ -69,33 +75,50 @@ const PostList: React.FC = () => {
 
   return (
     <>
-      <p>Filter List:</p>
-      <ul>
-        {categoryFilter.map((category) => (
-          <li>{category}</li>
-        ))}
-      </ul>
-      <p>Post List:</p>
-      <ul>
-        {postList.map((post) => (
-          <li key={post.id}><Link to={`/posts/${post.id}`}>{post.title}</Link></li>
-        ))}
-      </ul>
-      <p>Category List:</p>
-      <ul>
-        {categoryList.map((category) => (
-          <li onClick={() => setCategoryFilterOnClick(category.name)}>
-            {category.name}
-          </li>  
-        ))}
-      </ul>
-      <p>Current Page: {currentPage}</p>
-      <p>Page List</p>
-      <ul>
+      <div className="filter">
+        <Dropdown
+          formLabel="Choose a category"
+          action="/"
+          onChange={(e) => {
+            e.preventDefault();
+            setCategoryFilterOnClick(e.target.value);
+          }}
+        >
+          <Option selected value="All" />
+          {categoryList.map(category => (
+            <Option
+              selected={categoryFilter.includes(category.name)}
+              value={category.name} key={category.id}
+            />
+          ))}
+        </Dropdown>
+      </div>
+      {postList.map((post) => (
+        <Link className="link" to={`/posts/${post.id}`}>
+          <div className="card">
+            <div className="card-header">
+              <img src={post.author.avatar} alt="" width={100} height={100} />
+              <p>{post.author.name}</p>
+            </div>
+            <div className="card-body">
+              <p>{post.title}</p>
+              <p>{post.summary}</p>
+              <ul>{post.categories.map(cate => {
+                return <li key={cate.id}>{cate.name}</li>
+              })}</ul>
+            </div>
+            <div className="card-footer">
+              <p>{new Date(post.publishDate).toDateString()}</p>
+            </div>
+          </div>
+        </Link>
+      ))}
+
+      <ul className="pagination">
         {pageList.map((page) => (
-          <li onClick={() => pageChangeOnClick(page)}>
-            {page === currentPage ? `[${page}]` : page}
-          </li>
+          <li className="item" onClick={() => pageChangeOnClick(page)}>
+          {page === currentPage ? `[${page}]` : page}
+        </li>
         ))}
       </ul>
     </>

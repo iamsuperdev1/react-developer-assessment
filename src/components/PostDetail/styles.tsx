@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 
+const Wrapper = styled.div `
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 const Panel = styled.div`
     display: flex;
     justify-content: center;
     padding: 10px 15px;
     max-width: 75vw;
+    margin: 0 auto;
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+    }
 `;
 
 const PanelLeft = styled.div`
@@ -19,7 +31,7 @@ const PanelImage = styled.img`
 const PanelRight = styled.div`
     padding: 15px 20px;
     background: white;
-    box-shadow: 0 5px 10px -6px rgb(0 0 0 / 15%);
+    box-shadow: 0 0 25px lightgray;
     line-height: 1.4;
 `;
 
@@ -40,6 +52,9 @@ const PanelParagraph = styled.p`
       }
       &:nth-child(4) {
         font-style: italic;
+      }
+      &:nth-child(5) {
+        font-weight: bold;
       }
 `;
 
@@ -80,4 +95,4 @@ const PabelBackBtn = styled.a `
     }
 `
 
-export { Panel, PanelLeft, PanelImage, PanelRight, PanelParagraph, PanelSpan, PanelUL, PanelLi, PanelFooter, PabelBackBtn };
+export { Wrapper, Panel, PanelLeft, PanelImage, PanelRight, PanelParagraph, PanelSpan, PanelUL, PanelLi, PanelFooter, PabelBackBtn };
