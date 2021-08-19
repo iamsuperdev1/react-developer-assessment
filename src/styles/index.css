@@ -45,7 +45,7 @@ code {
 .card {
   box-shadow: 0 0 25px lightgray;
   padding: 10px 15px;
-  width: 50%;
+  width: 80%;
   margin: 10px auto;
   background-color: white;
   transition: all 0.5s;

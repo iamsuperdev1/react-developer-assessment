@@ -11,7 +11,7 @@ const Panel = styled.div`
     display: flex;
     justify-content: center;
     padding: 10px 15px;
-    max-width: 75vw;
+    max-width: 80vw;
     margin: 0 auto;
     @media only screen and (max-width: 768px) {
         flex-direction: column;

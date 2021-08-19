@@ -94,24 +94,24 @@ const PostList: React.FC = () => {
         </Dropdown>
       </div>
       {postList.map((post) => (
-        <Link className="link" to={`/posts/${post.id}`}>
-          <div className="card">
-            <div className="card-header">
-              <img src={post.author.avatar} alt="" width={100} height={100} />
-              <p>{post.author.name}</p>
-            </div>
-            <div className="card-body">
-              <p>{post.title}</p>
-              <p>{post.summary}</p>
-              <ul>{post.categories.map(cate => {
-                return <li key={cate.id}>{cate.name}</li>
-              })}</ul>
-            </div>
-            <div className="card-footer">
-              <p>{new Date(post.publishDate).toDateString()}</p>
-            </div>
+        <div className="card">
+          <div className="card-header">
+            <img src={post.author.avatar} alt="" width={100} height={100} />
+            <Link className="link" to={`/posts/${post.id}`}>
+            <p>{post.author.name}</p>
+            </Link>
           </div>
-        </Link>
+          <div className="card-body">
+            <p>{post.title}</p>
+            <p>{post.summary}</p>
+            <ul>{post.categories.map(cate => {
+              return <li key={cate.id}>{cate.name}</li>
+            })}</ul>
+          </div>
+          <div className="card-footer">
+            <p>{new Date(post.publishDate).toDateString()}</p>
+          </div>
+        </div>
       ))}
 
       <ul className="pagination">
