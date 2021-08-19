@@ -55,6 +55,7 @@ const PostList: React.FC = () => {
 
   useEffect(() => {
     fetchPosts();
+    history.push(`?page=${currentPage}&pageSize=${pageSize}&category=${categoryFilter}`);
   }, [pageSize, currentPage, categoryFilter]); // eslint-disable-line react-hooks/exhaustive-deps
   
   const setCategoryFilterOnClick = (category: string) => {
