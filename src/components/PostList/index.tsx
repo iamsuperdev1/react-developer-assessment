@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { createBrowserHistory } from "history";
 import qs from "qs";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import APIService from '../../services/api.services';
-import { Link } from "react-router-dom";
 import { Dropdown } from "../Dropdown";
 import { Option } from '../Dropdown/Option/index';
 
 const PostList: React.FC = () => {
-  const history = createBrowserHistory();
+  const history = useHistory();
   const [categoryList, setCategoryList] = useState<ICategory[]>([]);
   const [postList, setPostList] = useState<IPost[]>([]);
 

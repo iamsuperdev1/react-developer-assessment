@@ -6,8 +6,10 @@ import {
   PabelBackBtn, Panel, PanelFooter, PanelImage,
   PanelLeft, PanelLi, PanelParagraph, PanelRight, PanelSpan, PanelUL
 } from './styles';
+import { useHistory } from "react-router-dom";
 
 const PostDetail: React.FC = () => {
+  const history = useHistory();
   const { postId } = useParams<{ postId: string }>();
   const [post, setPost] = useState<IPost | null>(null);
   
@@ -44,7 +46,9 @@ const PostDetail: React.FC = () => {
             </PanelUL>
             <PanelSpan>Publish Date: {post.publishDate}</PanelSpan>
             <PanelFooter>
-              <PabelBackBtn>Back</PabelBackBtn>
+              <PabelBackBtn onClick={() => history.go(-1)}>
+                Back
+              </PabelBackBtn>
             </PanelFooter>
           </PanelRight>
         </Panel>
