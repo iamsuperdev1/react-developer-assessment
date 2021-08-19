@@ -1,9 +1,10 @@
 import React from 'react';
-import { DropdownWrapper, StyledSelect, StyledLabel, StyledButton } from './style';
+import { DropdownWrapper, StyledSelect, StyledLabel } from './style';
 
 type DropdownProps = {
     formLabel: string;
     action: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onChange: (e: any) => void
 }
 

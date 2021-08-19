@@ -65,6 +65,7 @@ const PostList: React.FC = () => {
     } else {
       if (!categoryFilter.includes(category))
         setCategoryFilter([...categoryFilter, category]);
+        setCurrentPage(1);
     }
   };
 

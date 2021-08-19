@@ -5,7 +5,6 @@ const Header: React.FC = () => {
   return (
     <NavigationBar>
       <Item><Link isActive={true} href="/">Home</Link></Item>
-      <Item><Link isActive={false} href="/posts">Posts</Link></Item>
     </NavigationBar>
   )
 }
