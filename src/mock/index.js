@@ -37,6 +37,11 @@ createServer({
       }
     });
 
+    this.get('/posts/:id', (_, request) => {
+      let id = request.params.id;
+      return data.posts.find(post => post.id === id)
+    });
+
     this.get('/categories', () => {
       const responseData = [];
       let categorySet = new Set();
