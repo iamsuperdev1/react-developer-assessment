@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
+    "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.12",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",

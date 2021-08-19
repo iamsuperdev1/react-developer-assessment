@@ -29,6 +29,17 @@ async function getPosts(options: IGetPostOption): Promise<IGetPostResp> {
   return posts;
 }
 
+async function getPostById(id: string): Promise<IPost|null> {
+  const response = await fetch(`/api/posts/${id}`);
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    console.log(message);
+    return null;
+  }
+  const post = await response.json();
+  return post;
+}
+
 async function getCategories(): Promise<IGetCategoryResp> {
   const response = await fetch('/api/categories');
   if (!response.ok) {

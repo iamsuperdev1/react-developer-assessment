@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createBrowserHistory } from "history";
 import qs from "qs";
 import APIService from '../../services/api.services';
+import { Link } from "react-router-dom";
 
 interface PostsQueryParam {
   page: number;
@@ -69,7 +70,7 @@ const PostList: React.FC = () => {
       <p>Post List:</p>
       <ul>
         {postList.map((post) => (
-          <li>{post.title}</li>  
+          <li><Link to={`/posts/${post.id}`}>{post.title}</Link></li>  
         ))}
       </ul>
       <p>Category List:</p>
