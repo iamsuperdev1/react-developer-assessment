@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { CardBodySummary, CardBodyTitle, CardContainer, CardFooter, CardHeader, CardHeaderImage, CardHeaderName, StyledLink } from './style';
 
 type CardProps = {

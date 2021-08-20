@@ -6,7 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
-    <div>
+    <>
       <Header></Header>
       <Switch>
         <Route exact path="/">
@@ -19,8 +19,7 @@ const App: React.FC = () => {
           <PostDetail />
         </Route>
       </Switch>
-
-    </div>
+    </>
   );
 };
 

@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const Loading = styled.div `
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    background: aliceblue;
+    height: 100vh;
     &:after {
         content: " ";
         display: block;

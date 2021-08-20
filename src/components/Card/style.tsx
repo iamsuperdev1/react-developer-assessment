@@ -11,7 +11,10 @@ const CardContainer = styled.div `
 
     &:hover {
         background-color: lightgoldenrodyellow;
-    }  
+    }
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 const CardHeader = styled.div`
@@ -31,7 +34,6 @@ const CardHeaderName = styled.p`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-
     &:hover {
         color: black;
     }
@@ -40,15 +42,17 @@ const StyledLink = styled(Link)`
 const CardBodyTitle = styled.p`
     font-size: 16px;
     font-weight: 700;
+    padding: 5px 15px;
 `;
 
 const CardBodySummary = styled.p`
     font-size: 16px;
     font-style: italic;
+    padding: 5px 15px;
 `;
 
 const CardFooter = styled.div`
-    .p {
+    p {
         text-align: right;
         font-size: 16px;
         font-style: italic;

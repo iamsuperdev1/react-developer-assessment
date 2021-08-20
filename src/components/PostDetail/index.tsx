@@ -34,7 +34,6 @@ const PostDetail: React.FC = () => {
           </PanelLeft>
           <PanelRight>
             <PanelParagraph>{post.author.name}</PanelParagraph>
-            <PanelParagraph>{post.publishDate}</PanelParagraph>
             <PanelParagraph>{post.title}</PanelParagraph>
             <PanelParagraph>{post.summary}</PanelParagraph>
             <PanelParagraph>Categories</PanelParagraph>
@@ -43,7 +42,7 @@ const PostDetail: React.FC = () => {
                 <PanelLi >{category.name}</PanelLi>
               ))}
             </PanelUL>
-            <PanelSpan>Publish Date: {post.publishDate}</PanelSpan>
+            <PanelSpan>Published Date: <strong>{new Date(post.publishDate).toDateString()}</strong></PanelSpan>
             <PanelFooter>
               <PabelBackBtn onClick={() => history.go(-1)}>
                 Back

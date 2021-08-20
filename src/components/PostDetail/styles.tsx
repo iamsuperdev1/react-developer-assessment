@@ -43,8 +43,9 @@ const PanelParagraph = styled.p`
         word-spacing: 3.1px;
     }
     &:nth-child(2) {
-        font-size: 14px;
+        font-size: 18px;
         color: #777 !important;
+        font-weight: 700;
     }
     &:nth-child(3) {
         font-weight: 500;
