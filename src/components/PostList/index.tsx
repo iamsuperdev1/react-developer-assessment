@@ -4,8 +4,9 @@ import { useHistory } from "react-router-dom";
 import APIService from '../../services/api.services';
 import { Dropdown, Option } from "../Dropdown";
 import { Card } from "../Card";
-import { Pagination } from "./styles";
+import { Filter, Pagination } from "./styles";
 import LoadingIndicator from "../LoadingIndicator";
+import { CardContainer } from "../Card/style";
 
 
 const PostList: React.FC = () => {
@@ -87,19 +88,21 @@ const PostList: React.FC = () => {
         <LoadingIndicator />
       ): (
         <>
-          <div className="filter">
-            <Dropdown formLabel="Choose a category" action="/"
-              onChange={(e) => {
-                e.preventDefault(); setCategoryFilterOnClick(e.target.value);
-              }}
-            >
-              <Option selected value="All" />
-              {categoryList.map(category => (
-                <Option selected={categoryFilter.includes(category.name)}
-                  value={category.name} key={category.id}/>
-              ))}
-            </Dropdown>
-          </div>
+          <CardContainer>
+            <Filter>
+              <Dropdown formLabel="Choose a category" action="/"
+                onChange={(e) => {
+                  e.preventDefault(); setCategoryFilterOnClick(e.target.value);
+                }}
+              >
+                <Option selected value="All" />
+                {categoryList.map(category => (
+                  <Option selected={categoryFilter.includes(category.name)}
+                    value={category.name} key={category.id}/>
+                ))}
+              </Dropdown>
+            </Filter>
+          </CardContainer>
           {postList.map((post) => (
             <Card post={post} />
           ))}

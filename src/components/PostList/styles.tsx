@@ -27,6 +27,12 @@ const Pagination = styled.ul`
     }
 `;
 
+const Filter = styled.div`
+    width: 50%;
+    padding: 10px 20px;
+`;
+
 export {
-    Pagination
+    Pagination,
+    Filter
 };

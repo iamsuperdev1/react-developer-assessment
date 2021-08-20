@@ -35,11 +35,6 @@ code {
   }
 }
 
-.filter {
-  width: 50%;
-  padding: 10px 20px;
-}
-
 @media only screen and (max-width: 768px) {
   .card {
     width: 80%;
