@@ -18,12 +18,13 @@ export const Card: React.FC<CardProps> = ({ post }) => {
             </CardHeader>
             <CardBodyTitle>{post.title}</CardBodyTitle>
             <CardBodySummary>{post.summary}</CardBodySummary>
+            <CardBodyTitle>Category:</CardBodyTitle>
             <ul>{post.categories.map(cate => {
                 return <li key={cate.id}>{cate.name}</li>
             })}</ul>
             <CardFooter>
                 <p>{new Date(post.publishDate).toDateString()}</p>
             </CardFooter>
-      </CardContainer>
+        </CardContainer>
     )
 }
