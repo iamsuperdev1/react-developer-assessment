@@ -1,0 +1,99 @@
+import styled from 'styled-components';
+
+const Wrapper = styled.div `
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Panel = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 10px 15px;
+    max-width: 80vw;
+    margin: 0 auto;
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        text-align: left;
+    }
+`;
+
+const PanelLeft = styled.div`
+    padding: 10px 15px;
+`;
+
+const PanelImage = styled.img`
+    background: transparent;
+    border-radius: 50%;
+`
+
+const PanelRight = styled.div`
+    padding: 15px 20px;
+    background: white;
+    box-shadow: 0 0 25px lightgray;
+    line-height: 1.4;
+`;
+
+const PanelParagraph = styled.p`
+    margin: 5px 0;
+    &:nth-child(1) {
+        font-size: 20px;
+        font-weight: 500;
+        word-spacing: 3.1px;
+    }
+    &:nth-child(2) {
+        font-size: 18px;
+        color: #777 !important;
+        font-weight: 700;
+    }
+    &:nth-child(3) {
+        font-weight: 500;
+        font-size: 15px;
+    }
+    &:nth-child(4) {
+        font-style: italic;
+    }
+    &:nth-child(5) {
+        font-weight: bold;
+    }
+`;
+
+const PanelSpan = styled.span`
+    display: inline-block;
+    margin: 10px 0;
+    font-size: 14px;
+    font-style: italic;
+    width: 100%;
+    text-align: right;
+`;
+
+const PanelUL = styled.ul`
+    list-style: inside;
+    padding: 0 10px;
+`
+const PanelLi = styled.li`
+    font-size: 16px;
+    font-weight: 300;
+`
+
+const PanelFooter = styled.div `
+    text-align: right;
+`
+
+const PabelBackBtn = styled.a `
+    display: inline-block;
+    text-decoration: none;
+    background: lightblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 1px 2px lightslategrey;
+    color: gray;
+    transition: all 0.5s;
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+`
+
+export { Wrapper, Panel, PanelLeft, PanelImage, PanelRight, PanelParagraph, PanelSpan, PanelUL, PanelLi, PanelFooter, PabelBackBtn };
